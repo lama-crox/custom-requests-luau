@@ -14,6 +14,7 @@ function requestLib:httpPost(url: 'https://example.com', headers: 'Header Input'
         if content ~= '' then break end
     end
 
+    print(content)
     return content
 end
 
