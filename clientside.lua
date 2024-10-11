@@ -4,6 +4,7 @@ local requestLib = {waitThreshold = 1.25}
 
 function requestLib:httpPost(url: 'https://example.com', headers: 'Header Input', json: 'Json Input', inputfile, outputfile)
     if not inputfile or not outputfile then return end
+    print(url, headers, json)
     writefile(outputfile, '')
     writefile(inputfile, string.format('POST:Cut:%s:Cut:%s:Cut:%s', url, headers, json))
 
