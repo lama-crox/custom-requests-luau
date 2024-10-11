@@ -1,7 +1,7 @@
 from requests import post, get
 from time import sleep
 from os import path
-from json import loads
+from ast import literal_eval
 
 configuration = {'checkRate': 0.1}
 table = {'inputfile': 'path/to/input', 'outputfile': 'path/to/output'}
@@ -24,11 +24,11 @@ while True:
 
         parameters = fileData.split(':Cut:')
         if parameters[0] == 'POST':
-            response = post(parameters[1], headers=loads(parameters[2]), json=loads(parameters[3]))
-            writeFile(response)
+            response = post(parameters[1], headers=literal_eval(parameters[2]), json=literal_eval(parameters[3]))
+            writeFile(str(response))
         elif parameters[0] == 'GET':
-            response = get(parameters[1], params=loads(parameters[2]))
-            writeFile(response)
+            response = get(parameters[1], params=literal_eval(parameters[2]))
+            writeFile(str(response))
     except Exception as e:
         writeFile(f'Failed to fetch data: {str(e)}')
 
