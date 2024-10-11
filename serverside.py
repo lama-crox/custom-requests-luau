@@ -25,10 +25,10 @@ while True:
         parameters = fileData.split(':Cut:')
         if parameters[0] == 'POST':
             response = post(parameters[1], headers=literal_eval(parameters[2]), json=literal_eval(parameters[3]))
-            writeFile(str(response))
+            writeFile(f'Status Code: {response.status_code}, Json: {response.json()}')
         elif parameters[0] == 'GET':
             response = get(parameters[1], params=literal_eval(parameters[2]))
-            writeFile(str(response))
+            writeFile(f'Status Code: {response.status_code}, Json: {response.json()}')
     except Exception as e:
         writeFile(f'Failed to fetch data: {str(e)}')
 
