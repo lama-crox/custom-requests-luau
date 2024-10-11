@@ -6,11 +6,11 @@ requestLib.waitThreshold = 1.25
 requestLib.sleepTime = 0.01
 
 function requestLib.setWaitThreshold(value)
-    module.waitThreshold = value
+    requestLib.waitThreshold = value
 end
 
 function requestLib.setSleepTime(value)
-    module.sleepTime = value
+    requestLib.sleepTime = value
 end
 
 -- THE ARGUMENTS SHOULD BE WRITTEN IN A PYTHON FORMAT!
