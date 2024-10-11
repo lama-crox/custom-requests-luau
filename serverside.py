@@ -1,20 +1,21 @@
 from requests import post, get
 from time import sleep
-from pathlib import Path
+from os import path
 from json import loads
 
 configuration = {'checkRate': 0.1}
-data = {'inputfile': 'path/to/input/file', 'outputfile': 'path/to/output/file'}
+table = {'inputfile': 'path/to/input', 'outputfile': 'path/to/output'}
 
 def readFile():
-    if Path.exists(data['inputfile']):
-        with open(data['inputfile'], 'r') as file:
+    if path.exists(table['inputfile']):
+        with open(table['inputfile'], 'r') as file:
             return file.read()
 
 def writeFile(data):
-    if Path.exists(data['outputfile']):
-        with open(data['outputfile'], 'w') as file:
-            file.write(data)
+    if path.exists(table['outputfile']):
+        with open(table['outputfile'], 'w') as file1, open(table['inputfile'], 'w') as file2:
+            file1.write(data)
+            file2.write('')
 
 while True:
     try:
