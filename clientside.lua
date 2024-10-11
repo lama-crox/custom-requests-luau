@@ -1,4 +1,4 @@
-local requestLib = {waitThreshold = 1.25}
+local requestLib = {waitThreshold = 1.25, sleepTime = 0.01}
 
 -- THE ARGUMENTS SHOULD BE WRITTEN IN A PYTHON FORMAT!
 
@@ -12,6 +12,7 @@ function requestLib:httpPost(url: 'https://example.com', headers: 'Header Input'
         if tick() - timeSince > requestLib.waitThreshold then break end
         content = readfile(outputfile)
         if content ~= '' then break end
+        task.wait(requestLib.sleepTime)
     end
 
     return content
@@ -27,6 +28,7 @@ function requestLib:httpGet(url: 'https://example.com', params: '{"Params"}', in
         if tick() - timeSince > requestLib.waitThreshold then break end
         content = readfile(outputfile)
         if content ~= '' then break end
+        task.wait(requestLib.sleepTime)
     end
 
     return content
