@@ -8,11 +8,10 @@ function requestLib:httpPost(url: 'https://example.com', headers: 'Header Input'
     writefile(inputfile, string.format('POST:Cut:%s:Cut:%s:Cut:%s', url, headers, json))
 
     local timeSince, content = tick()
-    while true do
+    while task.wait(requestLib.sleepTime) do
         if tick() - timeSince > requestLib.waitThreshold then break end
         content = readfile(outputfile)
         if content ~= '' then break end
-        task.wait(requestLib.sleepTime)
     end
 
     return content
@@ -24,11 +23,10 @@ function requestLib:httpGet(url: 'https://example.com', params: '{"Params"}', in
     writefile(inputfile, string.format('GET:Cut:%s:Cut:%s', url, params))
 
     local timeSince, content = tick()
-    while true do
+    while task.wait(requestLib.sleepTime) do
         if tick() - timeSince > requestLib.waitThreshold then break end
         content = readfile(outputfile)
         if content ~= '' then break end
-        task.wait(requestLib.sleepTime)
     end
 
     return content
