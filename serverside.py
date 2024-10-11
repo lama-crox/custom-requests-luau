@@ -14,7 +14,7 @@ def readFile():
 def writeFile(data):
     if Path.exists(data['outputfile']):
         with open(data['outputfile'], 'w') as file:
-            return file.write(data)
+            file.write(data)
 
 while True:
     try:
