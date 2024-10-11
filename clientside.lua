@@ -1,4 +1,17 @@
-local requestLib = {waitThreshold = 1.25, sleepTime = 0.01}
+local requestLib = {}
+
+-- Configuration
+
+requestLib.waitThreshold = 1.25
+requestLib.sleepTime = 0.01
+
+function requestLib.setWaitThreshold(value)
+    module.waitThreshold = value
+end
+
+function requestLib.setSleepTime(value)
+    module.sleepTime = value
+end
 
 -- THE ARGUMENTS SHOULD BE WRITTEN IN A PYTHON FORMAT!
 
